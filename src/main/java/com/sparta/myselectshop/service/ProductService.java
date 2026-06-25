@@ -109,4 +109,24 @@ public class ProductService {
 
 		productFolderRepository.save(new ProductFolder(product, folder));
 	}
+
+	public Page<ProductResponseDto> getProductInFolder(Long folderId,
+													   int page,
+													   int size,
+													   String sortBy,
+													   boolean isAsc,
+													   User user
+	) {
+
+		// Page 로직
+		Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
+		Sort sort = Sort.by(direction, sortBy);
+		Pageable pageable = PageRequest.of(page, size, sort);
+
+		Page<Product> productList = productRepository.findAllByUserAndProductFolderList_FolderId(user, folderId, pageable);
+
+		Page<ProductResponseDto> responseDtoList = productList.map(ProductResponseDto::new);
+
+		return responseDtoList;
+	}
 }
