@@ -1,6 +1,6 @@
 package com.sparta.myselectshop.service;
 
-import com.sparta.myselectshop.dto.ProductMyPriceRequestDto;
+import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
 import com.sparta.myselectshop.dto.ProductRequestDto;
 import com.sparta.myselectshop.dto.ProductResponseDto;
 import com.sparta.myselectshop.entity.*;
@@ -16,8 +16,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,7 +34,7 @@ public class ProductService {
 	}
 
 	@Transactional
-	public ProductResponseDto updateProduct(Long id, ProductMyPriceRequestDto requestDto) {
+	public ProductResponseDto updateProduct(Long id, ProductMypriceRequestDto requestDto) {
 		int myPrice = requestDto.getMyprice();
 		if (myPrice < MIN_MY_PRICE) {
 			throw new IllegalArgumentException("유효하지 않는 관심 가격입니다. 최소 " + MIN_MY_PRICE + "원 이상으로 설정해 주세요.");

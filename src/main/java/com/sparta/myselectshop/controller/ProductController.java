@@ -1,6 +1,6 @@
 package com.sparta.myselectshop.controller;
 
-import com.sparta.myselectshop.dto.ProductMyPriceRequestDto;
+import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
 import com.sparta.myselectshop.dto.ProductRequestDto;
 import com.sparta.myselectshop.dto.ProductResponseDto;
 import com.sparta.myselectshop.security.UserDetailsImpl;
@@ -27,7 +27,7 @@ public class ProductController {
 	@PutMapping("/products/{id}")
 	public ProductResponseDto updateProduct(
 			@PathVariable("id") Long id,
-			@RequestBody ProductMyPriceRequestDto requestDto
+			@RequestBody ProductMypriceRequestDto requestDto
 	) {
 		return productService.updateProduct(id, requestDto);
 
